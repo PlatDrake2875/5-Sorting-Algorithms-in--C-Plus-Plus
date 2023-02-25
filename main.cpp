@@ -1,13 +1,10 @@
 #include <bits/stdc++.h>
 
-/// NU UITA DE LONG LONG!!!
 using namespace std;
 
 ifstream in("t.in");
 ofstream out("t.out");
-//ofstream out("proiect_prlong long_data.xlsx");
 long long N, A_Max;
-//chrono::duration<long long int, ratio<111,10011>> TIMP_STL;
 double TIMP_STL;
 
 void afis(vector<long long> A)
@@ -57,12 +54,9 @@ void Radix_Sort(vector<long long> &A)
 {
     vector<long long> aux(N + 1);
     int BUCKET_NR;
-    //cout << "Introduceti marimea bucket-ului, in biti (Acesta poate fi orice putere de-a lui 2): ";
-    //cin >> BUCKET_SIZE;
     BUCKET_SIZE = 8;
     BUCKET_NR = 8 * sizeof(N) / BUCKET_SIZE;
     RADIX_SIZE  = (1 << BUCKET_SIZE) - 1;
-    //out << BUCKET_NR << " " << BUCKET_SIZE << " " << bitset<16> (RADIX_SIZE) << '\n';
     for(int i = 0; i < BUCKET_NR; ++i)
     {
         if(i % 2 == 0)
@@ -93,11 +87,7 @@ void Merge_Sort(vector<long long> &A, int left, int right)
             temp[k++] = A[j++];
     for(int k = left; k <= right; ++k)
         A[k] = temp[k - left];
-    //N_Max = 260238 (Ramane fara memorie daca declar temp-ul in stiva subprogramului)
 }
-/*
-Fun fact: Daca generez gap-urile dupa formula Sedgewick-Knuth (1985), atunci o sa am nevoie de 10^309 elemente ca sa le sortez in O(N^1.1). Interesant, nu?
-*/
 void Shell_Sort(vector<long long> &A, int gap_type)
 {
     vector<long long> Gaps;
@@ -201,7 +191,6 @@ void check_if_sorted(vector<long long> A)
 
 void sortari(int cnt, vector<long long> A)
 {
-    //auto t = clock();
     auto start = chrono::high_resolution_clock::now();
     switch(cnt)
     {
@@ -237,8 +226,6 @@ void sortari(int cnt, vector<long long> A)
         out << "Counting Sort: ";
         break;
     }
-    //t = clock() - t;
-    //double time_taken = ((double)t)/CLOCKS_PER_SEC;
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
     check_if_sorted(A);
@@ -263,7 +250,6 @@ void sortari(int cnt, vector<long long> A)
             out << Timp_dif << " ori mai rapida.\n";
         }
     }
-    //afis(A);
 }
 
 int main()
@@ -275,7 +261,6 @@ int main()
     {
         in >> N >> A_Max;
         out << "Pentru " << N << " elemente si valoarea maxima " << A_Max << " avem urmatoarele sortari cu timpii lor de executie:\n\n";
-        //out << N << " " << A_Max << '\n';
         vector<long long> nums(N + 1);
         for(int i = 1; i <= N; ++i)
         {
@@ -288,20 +273,6 @@ int main()
         }
         out << '\n';
     }
-    /*vector<pair<int, int>> A;
-    int v1[17] = {10, 100, 1000, 10000, 100000, 1000000, 100000000, 100000000, 5, 50, 500, 5000, 50000, 500000, 5000000, 50000000};
-    for(int i = 0; i < 15; ++i)
-    {
-        for(long long j = i; j < 16; ++j)
-        {
-            A.push_back({v1[i], v1[j]});
-            //out << v1[i] << " " << v1[j] << '\n';
-        }
-    }
-    sort(A.begin(), A.end());
-    for(auto i : A)
-    {
-        out << i.first << " " << i.second << '\n';
-    }*/
+
     return 0;
 }
