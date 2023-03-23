@@ -1,4 +1,4 @@
-# 5-Sorting-Algorithms-in-C-
+# 5-Sorting-Algorithms-in-C-Plus-Plus
 
 Implementation of:
 1) Radix sort
